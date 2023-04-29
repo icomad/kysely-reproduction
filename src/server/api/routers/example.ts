@@ -3,12 +3,12 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const exampleRouter = createTRPCRouter({
   testDecimal: publicProcedure.query(async ({ ctx }) => {
-    const { decimal } = await ctx.db
+    const { decimalValue } = await ctx.db
       .selectFrom("testTable")
-      .select("decimal")
+      .select("decimalValue")
       .executeTakeFirstOrThrow();
-    console.log("[router fn] isDecimal: ", Decimal.isDecimal(decimal));
-    console.log("[router fn] typeof: ", typeof decimal);
+    console.log("[router fn] isDecimal: ", Decimal.isDecimal(decimalValue));
+    console.log("[router fn] typeof: ", typeof decimalValue);
     return { message: "hello" };
   }),
 });

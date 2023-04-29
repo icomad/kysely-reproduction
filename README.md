@@ -7,8 +7,9 @@
 1. Run `pnpm migrate` or `npm migrate`
 1. Run `pnpm seed` or `npm seed` (This will fail because of problem #1, so insert manually a new row in db)
 1. Run the project with `pnpm dev` or `npm dev`
+1. Visit localhost:3000 and check server logs
 
 # The problems
 
 1. Inserting a Decimal value will result in error `error: invalid input syntax for type numeric: ""<value>""`
-1. Retrieving a postgres decimal value will not be parsed to Decimal even after setting `pg.types.setTypeParser(1700, parseDecimal)`
+1. Retrieving a postgres decimal value will not be parsed to Decimal in trpc router even after setting `pg.types.setTypeParser(1700, parseDecimal)`
